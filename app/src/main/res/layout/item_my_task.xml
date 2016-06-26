@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent" android:layout_height="wrap_content"
+    android:background="@color/material_deep_teal_200">
+
+    <CheckBox
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/chbxIsComplated"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:checked="false" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:text="Medium Text"
+        android:id="@+id/tvText"
+        android:layout_alignBottom="@+id/chbxIsComplated"
+        android:layout_toRightOf="@+id/chbxIsComplated"
+        android:layout_toEndOf="@+id/chbxIsComplated"
+        android:layout_marginLeft="34dp"
+        android:layout_marginStart="34dp" />
+
+    <ImageButton
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/btnCall"
+        android:src="@android:drawable/sym_action_call"
+        android:background="#00ffffff"
+        android:layout_below="@+id/chbxIsComplated"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true" />
+
+    <ImageButton
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/btnLocation"
+        android:src="@android:drawable/ic_dialog_map"
+        android:background="#00ffffff"
+        android:layout_alignTop="@+id/btnCall"
+        android:layout_toLeftOf="@+id/btnCall"
+        android:layout_toStartOf="@+id/btnCall"
+        android:layout_marginRight="66dp"
+        android:layout_marginEnd="66dp" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceSmall"
+        android:text="Small Text"
+        android:id="@+id/tvDate"
+        android:layout_alignBottom="@+id/btnCall"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
+
+</RelativeLayout>
