@@ -1,4 +1,4 @@
-package com.abs.samih.fcm_ex01;
+package com.abs.samih.fcm_ex01.data;
 
 import android.location.Location;
 
