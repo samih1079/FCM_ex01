@@ -93,9 +93,9 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
             protected void onPostExecute(List<Address> locations) {
                 for (Address address:locations)
                 {
-                    LatLng sydney = new LatLng(address.getLatitude(), address.getLongitude());
-                    mMap.addMarker(new MarkerOptions().position(sydney).title(address.getAddressLine(0)));
-                    mMap.moveCamera(CameraUpdateFactory.newLatLng(sydney));
+                    LatLng location = new LatLng(address.getLatitude(), address.getLongitude());
+                    mMap.addMarker(new MarkerOptions().position(location).title(address.getAddressLine(0)));
+                    mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(location,16));
                 }
             }
         }.execute();
