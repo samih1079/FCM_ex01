@@ -8,6 +8,8 @@ import java.util.Date;
  * Created by school on 08/06/2016.
  */
 public class MyTask {
+
+    private String taskKey;
     private  String text;
     private boolean isComplated=false;
     private Date createdAt;
@@ -25,6 +27,14 @@ public class MyTask {
     }
 
     public MyTask() {
+    }
+
+    public String getTaskKey() {
+        return taskKey;
+    }
+
+    public void setTaskKey(String taskKey) {
+        this.taskKey = taskKey;
     }
 
     public Date getCreatedAt() {

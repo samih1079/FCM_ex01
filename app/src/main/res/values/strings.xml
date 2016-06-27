@@ -15,4 +15,5 @@
         completions."
     </string>
     <string name="title_activity_mng_task">MngTaskActivity</string>
+    <string name="title_activity_maps">Map</string>
 </resources>

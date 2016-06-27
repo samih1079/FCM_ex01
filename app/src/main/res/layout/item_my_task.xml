@@ -52,7 +52,7 @@
         android:textAppearance="?android:attr/textAppearanceSmall"
         android:text="Small Text"
         android:id="@+id/tvDate"
-        android:layout_alignBottom="@+id/btnCall"
+        android:layout_below="@+id/btnLocation"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true" />
 

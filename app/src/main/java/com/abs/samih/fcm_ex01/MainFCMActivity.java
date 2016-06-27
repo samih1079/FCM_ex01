@@ -1,8 +1,11 @@
 package com.abs.samih.fcm_ex01;
 
+import android.app.NotificationManager;
+import android.app.PendingIntent;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.NotificationCompat;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
@@ -174,5 +177,54 @@ public class MainFCMActivity extends AppCompatActivity {
 //
 //            }
 //        });
+
+//        final DatabaseReference reference = FirebaseDatabase.getInstance().getReference(email.replace(".","_"));
+//        reference.child("MyTasks").addValueEventListener(new ValueEventListener() {
+//            @Override
+//            public void onDataChange(DataSnapshot dataSnapshot) {
+//                myTaskAdapter.clear();
+//                makeNotification();
+//                for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
+//                    MyTask myTask = snapshot.getValue(MyTask.class);
+//                    myTaskAdapter.add(myTask);
+////                    Toast.makeText(MngTaskActivity.this,"DataSnapshot"+(i++),
+////                            Toast.LENGTH_LONG).show();
+//                }
+//                listView.setAdapter(myTaskAdapter);
+//            }
+//
+//            @Override
+//            public void onCancelled(DatabaseError databaseError) {
+//
+//            }
+//        });
+    }
+    public void makeNotification()
+    {
+        NotificationCompat.Builder mBuilder =
+                (NotificationCompat.Builder) new NotificationCompat.Builder(this)
+                        .setSmallIcon(R.mipmap.ic_launcher)
+                        .setContentTitle("Tasks Changed")
+                        .setContentText("new changes");
+        Intent resultIntent = new Intent(this, MngTaskActivity.class);
+
+// Because clicking the notification opens a new ("special") activity, there's
+// no need to create an artificial back stack.
+        PendingIntent resultPendingIntent =
+                PendingIntent.getActivity(
+                        this,
+                        0,
+                        resultIntent,
+                        PendingIntent.FLAG_UPDATE_CURRENT
+                );
+
+        mBuilder.setContentIntent(resultPendingIntent);
+
+        int mNotificationId = 001;
+// Gets an instance of the NotificationManager service
+        NotificationManager mNotifyMgr =
+                (NotificationManager) getSystemService(NOTIFICATION_SERVICE);
+// Builds the notification and issues it.
+        mNotifyMgr.notify(mNotificationId, mBuilder.build());
     }
 }
