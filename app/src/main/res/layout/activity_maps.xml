@@ -9,18 +9,18 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context="com.abs.samih.fcm_ex01.MapsActivity"
-    android:layout_below="@+id/btnGo" />
+    android:layout_alignParentTop="true" />
 
     <EditText
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/etToSearch"
         android:layout_alignParentTop="true"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
-        android:layout_toLeftOf="@+id/btnGo"
         android:layout_toStartOf="@+id/btnGo"
-        android:hint="To Search" />
+        android:hint="To Search"
+        android:layout_toLeftOf="@+id/btnGo" />
 
     <Button
         android:layout_width="wrap_content"
@@ -29,5 +29,33 @@
         android:id="@+id/btnGo"
         android:layout_alignParentTop="true"
         android:layout_alignParentRight="true"
-        android:layout_alignParentEnd="true" />
+        android:layout_alignParentEnd="true"
+        android:background="#5affffff" />
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        >
+
+        <Button
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="Save&amp;Return"
+            android:id="@+id/btnSave"
+            android:layout_gravity="bottom"
+            android:layout_weight="1"
+            android:background="#5affffff" />
+
+        <Button
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="Cancel"
+            android:id="@+id/btnCancel"
+            android:layout_gravity="bottom"
+            android:layout_weight="1"
+            android:background="#5affffff" />
+    </LinearLayout>
 </RelativeLayout>

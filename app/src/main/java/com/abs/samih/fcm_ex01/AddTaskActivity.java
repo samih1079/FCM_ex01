@@ -52,8 +52,10 @@ public class AddTaskActivity extends AppCompatActivity {
     private View.OnClickListener clickListener = new View.OnClickListener() {
         @Override
         public void onClick(View v) {
+
             //4
-            if (v==btnSave) {
+            if (v==btnSave)
+            {
                 //5
                 String txt=etText.getText().toString();
                 String phone=etPhone.getText().toString();
@@ -87,9 +89,23 @@ public class AddTaskActivity extends AppCompatActivity {
             }
             if(v==btnLocation)
             {
-                startActivityForResult(new Intent(AddTaskActivity.this,MapsActivity.class),100);
+                startActivityForResult(new Intent(AddTaskActivity.this,MapsActivity.class),70);
             }
 
         }
     };
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        if(resultCode==RESULT_OK)
+        {
+            if(requestCode==70)
+            {
+                double lat=data.getExtras().getDouble("lat");
+                double lng=data.getExtras().getDouble("lng");
+                String s= lat+","+lng;
+                etLocation.setText(s);
+            }
+        }
+    }
 }
