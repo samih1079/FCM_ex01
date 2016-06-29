@@ -63,7 +63,6 @@ public class AddTaskActivity extends AppCompatActivity {
                 int prio=rtPrio.getProgress();
                 Date date= Calendar.getInstance().getTime();
                 MyTask myTask=new MyTask(txt,false,date,prio,loc,phone);
-
                 //6 save
                 DatabaseReference reference= FirebaseDatabase.getInstance().getReference();
                 //
