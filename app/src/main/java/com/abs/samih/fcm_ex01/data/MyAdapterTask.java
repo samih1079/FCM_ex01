@@ -9,9 +9,11 @@ import android.widget.CheckBox;
 import android.widget.CompoundButton;
 import android.widget.ImageButton;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.abs.samih.fcm_ex01.R;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
@@ -24,6 +26,11 @@ public class MyAdapterTask extends ArrayAdapter<MyTask>
     //9
     private DatabaseReference reference;
 
+    /**
+     *
+     * @param context
+     * @param resource
+     */
     //3.
     public MyAdapterTask(Context context, int resource) {
         super(context, resource);
@@ -52,6 +59,8 @@ public class MyAdapterTask extends ArrayAdapter<MyTask>
         TextView tvText= (TextView) convertView.findViewById(R.id.tvText);
         TextView tvDate= (TextView) convertView.findViewById(R.id.tvDate);
         ImageButton btnCall=(ImageButton)convertView.findViewById(R.id.btnCall);
+        ImageButton btndel=(ImageButton)convertView.findViewById(R.id.btnDel);
+
         ImageButton btnLocation=(ImageButton)convertView.findViewById(R.id.btnLocation);
 
         //7  //data source
@@ -70,6 +79,27 @@ public class MyAdapterTask extends ArrayAdapter<MyTask>
             @Override
             public void onClick(View v) {
                 // go to map
+            }
+        });
+        btndel.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                reference.child(myTask.getTaskKey()).removeValue(new DatabaseReference.CompletionListener() {
+                    @Override
+                    public void onComplete(DatabaseError databaseError, DatabaseReference databaseReference) {
+                        if(databaseError==null)
+                        {
+                            remove(myTask);
+                            Toast.makeText(getContext(),"deleted!",Toast.LENGTH_SHORT).show();
+                            setNotifyOnChange(true);
+                        }
+                        else
+                        {
+                            Toast.makeText(getContext(),"delete error:"+databaseError.getMessage(),Toast.LENGTH_SHORT).show();
+                            databaseError.toException().printStackTrace();
+                        }
+                    }
+                });
             }
         });
 

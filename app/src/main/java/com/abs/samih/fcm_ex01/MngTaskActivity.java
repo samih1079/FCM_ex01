@@ -6,6 +6,7 @@ import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ListView;
 
 import com.abs.samih.fcm_ex01.data.MyAdapterTask;
@@ -32,7 +33,29 @@ public class MngTaskActivity extends AppCompatActivity {
         adapterTask=new MyAdapterTask(this,R.layout.item_my_task);
         //7
         listView.setAdapter(adapterTask);
+        listView.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
+            @Override
+            public boolean onItemLongClick(AdapterView<?> adapterView, View view, int i, long l) {
+                return true;
+            }
+        });
 
+
+        initListView();
+
+        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
+        fab.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
+                        .setAction("Action", null).show();
+                Intent intent = new Intent(MngTaskActivity.this, AddTaskActivity.class);
+                startActivity(intent);
+            }
+        });
+    }
+
+    private void initListView() {
         //1. get fixed email(replace '.' with '_')
         String email=FirebaseAuth.getInstance().getCurrentUser().getEmail().replace('.','_');
 
@@ -61,17 +84,6 @@ public class MngTaskActivity extends AppCompatActivity {
             @Override
             public void onCancelled(DatabaseError databaseError) {
 
-            }
-        });
-
-        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
-        fab.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
-                Intent intent = new Intent(MngTaskActivity.this, AddTaskActivity.class);
-                startActivity(intent);
             }
         });
     }
